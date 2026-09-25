@@ -5,6 +5,7 @@ import Classes from './components/Classes'
 import Hours from './components/Hours'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import WhatsAppFloat from './components/WhatsAppFloat'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </>
   )
 }

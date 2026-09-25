@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MapPin, Phone } from 'lucide-react'
+import { MapPin, Phone, Navigation } from 'lucide-react'
 import { centre } from '../data/centre'
 
 export default function Contact() {
@@ -12,6 +12,8 @@ export default function Contact() {
   }
 
   const field = 'w-full rounded-lg border p-3 outline-none focus:border-brand'
+
+  const mapQuery = encodeURIComponent(centre.address)
 
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6 py-16">
@@ -40,6 +42,32 @@ export default function Contact() {
           </button>
           {sent && <p className="font-medium text-green-600">Thanks! We'll contact you soon. (Demo)</p>}
         </form>
+      </div>
+
+      {/* Google Maps Location */}
+      <div className="mt-12">
+        <div className="overflow-hidden rounded-2xl shadow-sm">
+          <iframe
+            title="Young Tuition Centre Location"
+            src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+            width="100%"
+            height="350"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+        <div className="mt-4 text-center">
+          <a
+            href={`https://www.google.com/maps/dir/?api=1&destination=${mapQuery}`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg border border-brand px-5 py-2 font-medium text-brand transition hover:bg-brand hover:text-white"
+          >
+            <Navigation size={16} /> Get Directions
+          </a>
+        </div>
       </div>
     </section>
   )
