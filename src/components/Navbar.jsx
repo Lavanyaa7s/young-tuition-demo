@@ -14,20 +14,22 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-        <a href="#home" className="flex items-center gap-2 font-bold">
-          <img src={logo} alt="logo" className="h-10" />
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="#home" className="flex items-center gap-2.5 text-lg font-bold text-brand-dark">
+          <img src={logo} alt="Young Tuition" className="h-10" />
           Young Tuition
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
           {links.map(l => (
-            <a key={l.href} href={l.href} className="font-medium hover:text-brand">{l.label}</a>
+            <a key={l.href} href={l.href} className="text-sm font-medium text-gray-600 transition hover:text-brand-dark">
+              {l.label}
+            </a>
           ))}
           <a href={`tel:${centre.phone}`}
-             className="flex items-center gap-2 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white hover:bg-brand-dark">
-            <Phone size={16} /> Call Us
+             className="flex items-center gap-2 rounded-full bg-brand-dark px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand">
+            <Phone size={15} /> Call Us
           </a>
         </nav>
 
@@ -37,10 +39,16 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <nav className="flex flex-col gap-4 border-t bg-white px-6 py-4 md:hidden">
+        <nav className="flex flex-col gap-4 border-t bg-white px-6 py-5 md:hidden">
           {links.map(l => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="font-medium text-gray-700">
+              {l.label}
+            </a>
           ))}
+          <a href={`tel:${centre.phone}`}
+             className="flex w-max items-center gap-2 rounded-full bg-brand-dark px-5 py-2.5 text-sm font-semibold text-white">
+            <Phone size={15} /> Call Us
+          </a>
         </nav>
       )}
     </header>
